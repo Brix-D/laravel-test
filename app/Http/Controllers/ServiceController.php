@@ -15,8 +15,15 @@ class ServiceController extends Controller
 
     public function store(Request $request) {
         // example getting json body
-        dd(json_decode($request->getContent(), true));
+        $form = json_decode($request->getContent(), true);
 
+        //dd();
+
+        $service = new Service();
+        $service->title = $form['title'];
+        $service->description = $form['description'];
+        $service->cost = $form['cost'];
+        $service->save();
         return view('welcome', compact($request));
     }
 }
