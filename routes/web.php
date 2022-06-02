@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 
 Route::get('/about', 'AboutController@index');
+Route::get('/services', 'ServiceController@index');
