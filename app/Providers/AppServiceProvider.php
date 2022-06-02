@@ -3,7 +3,12 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
 
+/**
+ * утранение ошибки с миграциями
+ * @see https://mb4.ru/frameworks/laravel/articles/1027-laravel-migrate-error-specified-key-was-too-long.html
+ * */
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,5 +29,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Schema::defaultStringLength(191);
     }
 }
