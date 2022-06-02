@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+//use app\Http\Controllers\AboutController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,6 +18,4 @@ Route::get('/', function () {
 });
 
 
-Route::get('/about', function () {
-    return view('welcome');
-});
+Route::get('/about', 'AboutController@index');
