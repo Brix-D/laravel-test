@@ -26,4 +26,15 @@ class ServiceController extends Controller
         $service->save();
         return view('welcome', compact($request));
     }
+
+    public function edit(Request $request, $id) {
+        $form = json_decode($request->getContent(), true);
+        //dd($id);
+        $service = Service::findOrFail($id);
+        $service->title = $form['title'];
+        $service->description = $form['description'];
+        $service->cost = $form['cost'];
+        $service->save();
+        return view('welcome', compact($request));
+    }
 }

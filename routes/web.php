@@ -21,4 +21,4 @@ Route::get('/', function () {
 Route::get('/about', 'AboutController@index');
 Route::get('/services', 'ServiceController@index');
 Route::post('/services', 'ServiceController@store');
-Route::put('/services', 'ServiceController@store');
+Route::put('/services/{id}', 'ServiceController@edit');
