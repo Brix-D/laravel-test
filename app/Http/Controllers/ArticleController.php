@@ -18,14 +18,6 @@ class ArticleController extends Controller
         return response()->json($articles);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     */
-    public function create()
-    {
-
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -62,17 +54,6 @@ class ArticleController extends Controller
         } catch (ModelNotFoundException $exception) {
             return response()->json(['message' => 'Not Found'], 404);
         }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
