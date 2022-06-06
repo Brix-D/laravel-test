@@ -18,7 +18,7 @@ class UserController extends Controller
         //   TODO Eloquent models methods
         $users = User::with('phone')->take(25)->get()->map(function ($item) {
             $user = $item->toArray();
-            $user['phone'] = $item->phone->value;
+            $user['phone'] = $item->phone;
             return $user;
         });
         // Raw join query
