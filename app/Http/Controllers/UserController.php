@@ -16,9 +16,10 @@ class UserController extends Controller
     public function index(): JsonResponse
     {
         //   TODO Eloquent models methods
-        $users = User::with('phone')->take(25)->get()->map(function ($item) {
-            $user = $item->toArray();
+        $users = User::with(['phone', 'likedArticles'])->take(25)->get()->map(function ($item) {
+            $user = $item->makeHidden('likedArticles')->toArray();
             $user['phone'] = $item->phone;
+            $user['likes'] = $item->likedArticles->count();
             return $user;
         });
         // Raw join query

@@ -14,7 +14,13 @@ class ArticleController extends Controller
     {
         // $service = Service::get();
         // return response()->json(['services' => $service]);
-        $articles = Article::take(25)->get();
+        $articles = Article::with('likedByUsers')->take(25)->get();
+        $articles = $articles->map(function ($item) {
+            $article = $item->makeHidden('likedByUsers')->toArray();
+            $article['likedByUsers'] = $item->likedByUsers;
+            $article['likes'] = $item->likedByUsers->count();
+            return $article;
+        });
         return response()->json($articles);
     }
 
