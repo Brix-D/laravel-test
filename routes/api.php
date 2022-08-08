@@ -22,3 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('articles', 'ArticleController');
 
 Route::apiResource('users', 'UserController');
+
+Route::get('/linked-users', 'UserController@getLinkedUsers')->name('getLinkedUsers');
+Route::get('/link-user/{id}', 'UserController@linkUser')->name('linkUser');
+Route::get('/unlink-user/{id}', 'UserController@unlinkUser')->name('unlinkUser');

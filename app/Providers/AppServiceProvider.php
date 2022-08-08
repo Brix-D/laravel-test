@@ -30,8 +30,8 @@ class AppServiceProvider extends ServiceProvider
     {
 
         Schema::defaultStringLength(191);
-        \DB::listen(function ($query) {
-            var_dump([$query->sql, $query->time / 1000 . ' ms']);
-        });
+//        \DB::listen(function ($query) {
+//            var_dump([$query->sql, $query->time / 1000 . ' ms']);
+//        });
     }
 }

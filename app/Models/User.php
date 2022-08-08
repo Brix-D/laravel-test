@@ -52,4 +52,9 @@ class User extends Authenticatable
     public function likedArticles() : BelongsToMany {
         return $this->belongsToMany(Article::class);
     }
+
+    public function linkedUsers(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'linked_users', 'user_id', 'related_user_id');
+    }
 }

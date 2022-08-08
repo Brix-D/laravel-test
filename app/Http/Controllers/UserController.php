@@ -72,4 +72,33 @@ class UserController extends Controller
     {
         //
     }
+
+    public function getLinkedUsers(): JsonResponse
+    {
+        $currentUser = User::find(1);
+
+        $linkedUsers = $currentUser->linkedUsers;
+        return new JsonResponse($linkedUsers, JsonResponse::HTTP_OK);
+    }
+
+    public function linkUser(Request $request, $id)
+    {
+        $currentUser = User::find(1);
+        $linkedUsers = $currentUser->linkedUsers->add($currentUser);
+
+        $linkedUsers->each(function ($user) use ($id) {
+            $user->linkedUsers()->syncWithoutDetaching($id);
+        });
+
+    }
+
+    public function unlinkUser(Request $request, $id)
+    {
+        $currentUser = User::find(1);
+        $linkedUsers = $currentUser->linkedUsers->add($currentUser);
+
+        $linkedUsers->each(function ($user) use ($id) {
+            $user->linkedUsers()->detach($id);
+        });
+    }
 }
